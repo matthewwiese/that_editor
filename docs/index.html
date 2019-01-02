@@ -1,0 +1,270 @@
+<!-- pandoc index.md -o index.html -->
+<title>
+Bisqwit
+</title>
+<p><link rel="stylesheet" href="bisqwit.css" type="text/css"></p>
+<h1 id="keymap">Keymap</h1>
+<table style="width:49%;">
+<colgroup>
+<col width="12%" />
+<col width="36%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>FILE AND EXIT KEYS:</th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>^C:</td>
+<td>Exit without saving (will prompt for confirmation if unsaved changes)</td>
+</tr>
+<tr class="even">
+<td>^KD:</td>
+<td>Save file (will prompt for filename to save to)</td>
+</tr>
+<tr class="odd">
+<td>^KX:</td>
+<td>Save and exit (will not prompt for filename, unless filename not known)</td>
+</tr>
+<tr class="even">
+<td>^KE:</td>
+<td>Load new file without saving current one (will prompt for confirmation if unsaved changes; will prompt for filename to load)</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<table style="width:49%;">
+<colgroup>
+<col width="12%" />
+<col width="36%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>NAVIGATION KEYS:</th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>^V, pgdn:</td>
+<td>Go 1 page down</td>
+</tr>
+<tr class="even">
+<td>^U, pgup:</td>
+<td>Go 1 page up</td>
+</tr>
+<tr class="odd">
+<td>^A, home:</td>
+<td>Go to beginning of line (column 1 or beginning of indent)</td>
+</tr>
+<tr class="even">
+<td>^E, end:</td>
+<td>Go to end of line</td>
+</tr>
+<tr class="odd">
+<td>^B, left:</td>
+<td>Go left 1 character (if in column 1, go to end of previous line)</td>
+</tr>
+<tr class="even">
+<td>^F, right:</td>
+<td>Go right 1 character (if in end of line, go to beginning of next line)</td>
+</tr>
+<tr class="odd">
+<td>^W:</td>
+<td>Scroll window up 1 line without moving the cursor</td>
+</tr>
+<tr class="even">
+<td>^Z:</td>
+<td>Scroll window down 1 line without moving the cursor</td>
+</tr>
+<tr class="odd">
+<td>^KU, ctrl-pgup:</td>
+<td>Go to beginning of file</td>
+</tr>
+<tr class="even">
+<td>^KV, ctrl-pgdn:</td>
+<td>Go to end of file</td>
+</tr>
+<tr class="odd">
+<td>^KL:</td>
+<td>Prompt for a line number, and go to that line</td>
+</tr>
+<tr class="even">
+<td>^G:</td>
+<td>Go to the matching parenthesis</td>
+</tr>
+<tr class="odd">
+<td>ctrl-left:</td>
+<td>Go to the previous word's beginning</td>
+</tr>
+<tr class="even">
+<td>ctrl-right:</td>
+<td>Go to the next word's beginning</td>
+</tr>
+<tr class="odd">
+<td>ctrl-home:</td>
+<td>Go to the first displayed line (vertically only</td>
+</tr>
+<tr class="even">
+<td>ctrl-end:</td>
+<td>Go to the last displayed line (vertically only)</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<table style="width:49%;">
+<colgroup>
+<col width="12%" />
+<col width="36%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>EDITING KEYS:</th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>^Y:</td>
+<td>Erase the line on which the cursor is currently</td>
+</tr>
+<tr class="even">
+<td>^KB:</td>
+<td>Mark block begin at cursor location</td>
+</tr>
+<tr class="odd">
+<td>^KK:</td>
+<td>Mark block end at cursor location</td>
+</tr>
+<tr class="even">
+<td>^KM:</td>
+<td>Move block to current cursor location</td>
+</tr>
+<tr class="odd">
+<td>^KC:</td>
+<td>Copy block to current cursor location</td>
+</tr>
+<tr class="even">
+<td>^KY:</td>
+<td>Delete block</td>
+</tr>
+<tr class="odd">
+<td>^K period:</td>
+<td>Indent lines within the block by one tab stop (tab = 4)</td>
+</tr>
+<tr class="even">
+<td>^K comma:</td>
+<td>Unindent lines within the block by one tab stop (tab = 4)</td>
+</tr>
+<tr class="odd">
+<td>Alt-Z:</td>
+<td>Undo</td>
+</tr>
+<tr class="even">
+<td>Alt-Y, Alt-R:</td>
+<td>Redo</td>
+</tr>
+<tr class="odd">
+<td>insert:</td>
+<td>Toggle insert/overwrite</td>
+</tr>
+<tr class="even">
+<td>^D, delete:</td>
+<td>Delete the character at cursor</td>
+</tr>
+<tr class="odd">
+<td>^H, backspace:</td>
+<td>Go left by 1 character, then delete the character at cursor. If cursor was in the beginning of current line after indentation, erase enough spaces to unindent the line by 1 tab stop (tab = 4).</td>
+</tr>
+<tr class="even">
+<td>^I, tab:</td>
+<td>Enter space characters until the cursor is at a tab stop (tab = 4)</td>
+</tr>
+<tr class="odd">
+<td>^M, ^J, enter:</td>
+<td>Enter a newline character, and enough spaces to match the indent level of current line</td>
+</tr>
+<tr class="even">
+<td>Other:</td>
+<td>Enter the character.</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<table style="width:49%;">
+<colgroup>
+<col width="12%" />
+<col width="36%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>MISCELLANEOUS KEYS:</th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>^K space:</td>
+<td>Display information about the character under the cursor</td>
+</tr>
+<tr class="even">
+<td>^Q:</td>
+<td>Dummy</td>
+</tr>
+<tr class="odd">
+<td>^R:</td>
+<td>Redraw screen</td>
+</tr>
+<tr class="even">
+<td>F1:</td>
+<td>VGA mode change: Decrease rows by 1</td>
+</tr>
+<tr class="odd">
+<td>F2:</td>
+<td>VGA mode change: Increase rows by 1</td>
+</tr>
+<tr class="even">
+<td>F3:</td>
+<td>VGA mode change: Decrease columns by 2</td>
+</tr>
+<tr class="odd">
+<td>F4:</td>
+<td>VGA mode change: Increase columns by 2</td>
+</tr>
+<tr class="even">
+<td>F5:</td>
+<td>VGA mode change: Toggle 8pix / 9pix font</td>
+</tr>
+<tr class="odd">
+<td>F6:</td>
+<td>VGA mode change: Toggle double-width, change the width 50%/200% accordingly to keep window size the same</td>
+</tr>
+<tr class="even">
+<td>shift-F6:</td>
+<td>VGA mode change: Toggle double-width, without changing width</td>
+</tr>
+<tr class="odd">
+<td>F7:</td>
+<td>VGA mode change: Toggle double-width, adjust font/height to keep window size unchanged</td>
+</tr>
+<tr class="even">
+<td>shift-F7:</td>
+<td>VGA mode change: Toggle double-width, without changing height</td>
+</tr>
+<tr class="odd">
+<td>F8, ^T:</td>
+<td>Invoke the VGA mode change dialog</td>
+</tr>
+<tr class="even">
+<td>F9:</td>
+<td>VGA mode change: Toggle pseudo-Commodore64 mode with PET font if fontheight=8 (right now broken, sorry!)</td>
+</tr>
+<tr class="odd">
+<td>F10:</td>
+<td>VGA mode change: Toggle all-caps mode (use in conjunction with C64 mode)</td>
+</tr>
+</tbody>
+</table>
+<p><br><br></p>

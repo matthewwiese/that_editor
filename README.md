@@ -7,3 +7,5 @@ It's mostly a project to have fun and get some practical familiarity with C++. I
 
 Modifications I've made:
 - [X] English keyboard support (he hardcoded Finnish 🇫🇮) *IDEA: Detect keyboard layout*
+- [X] Status line shows a random fortune on startup
+- [X] Format keymap doc to HTML page *IDEA: Further elucidate documentation*
