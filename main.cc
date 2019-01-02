@@ -5,6 +5,13 @@
 #include <time.h>
 #include <ctype.h>
 
+// For retrieving fortune output
+#include <memory>
+#include <stdexcept>
+#include <string>
+#include <array>
+#include <algorithm>
+
 #include "langdefs.hh"
 #include "kbhit.hh"
 
@@ -56,8 +63,29 @@ const char* fnpart(const char* fn)
     return fn;
 }
 
-char StatusLine[256] = // WARNING: Not range-checked
-"Ad-hoc programming editor - (C) 2011-03-08 Joel Yliluoma";
+// MATT: Get output of fortune to use as status line.
+static std::string GenerateFortune() {
+    std::array<char, 256> buffer;
+    std::string fortune;
+    std::unique_ptr<FILE, decltype(&pclose)> pipe(popen("/usr/games/fortune", "r"), pclose);
+    if (!pipe) {
+        throw std::runtime_error("popen() failed!");
+    }
+    while (fgets(buffer.data(), buffer.size(), pipe.get()) != nullptr) {
+        fortune += buffer.data();
+    }
+
+    fortune.erase(std::remove(fortune.begin(), fortune.end(), '\n'), fortune.end());
+    fortune.erase(std::remove(fortune.begin(), fortune.end(), '\t'), fortune.end());
+    fortune.resize(256);
+    
+    char *debugstr = &fortune[0u];
+    fprintf(stderr, "%s\n", debugstr);
+
+    return fortune;
+}
+
+char StatusLine[256];
 
 EditorLineVecType EditLines;
 
@@ -599,7 +627,7 @@ static void VisRenderTitleAndStatus(int force=0)
         // RIGHT-side parts
         const char* Part3 = StatusGetClock();
         static char Part4[26]; sprintf(Part4, "%lu/%lu C", chars_file, chars_typed); //11+1+11+2+nul
-        static const char Part5[] = "+4.0øC"; // temperature degC degrees celsius
+        static const char Part5[] = "matt:)"; // MATT: This was the fake temperature indicator
 
         const char* Part6 = StatusGetCPUspeed();
 
@@ -1701,13 +1729,22 @@ static inline void k_ctrlright(void)
 
 int main(int argc, char**argv)
 {
+    // MATT: Copy fortune to StatusLine
+    // std::string -> char[]
+    strcpy(StatusLine, GenerateFortune().c_str());
+
 #ifdef __DJGPP__
     __djgpp_nearptr_enable();
 #endif
 
     InstallMario();
 
-    Syntax.Parse("c.jsf");
+    /*
+        Changed Bisqwit's C syntax to Markdown
+        TODO: Find JSF in directory corresponding
+        to current file type
+    */
+    Syntax.Parse("markdown.jsf");
     FileNew();
     if(argc == 2)
     {
@@ -1720,9 +1757,12 @@ int main(int argc, char**argv)
     VisSetCursor();
 
 #if !(defined(__BORLANDC__) || defined(__DJGPP__))
-    //VgaSetCustomMode(80,25, 16, use9bit=true, dblw=false,dblh=false, 1);
-    VgaSetCustomMode(132,80, 12, use9bit=false, dblw=false,dblh=false, 1);
-    //VgaSetCustomMode(80,25, 32, use9bit=true, dblw=false,dblh=false, 1);
+    // MATT: Set window properties for Linux here.
+    //VgaSetCustomMode(80, 25, 16, use9bit=true, dblw=false, dblh=false, 1);
+    //VgaSetCustomMode(80, 25, 32, use9bit=true, dblw=false, dblh=false, 1);
+    //VgaSetCustomMode(132, 80, 12, use9bit=false, dblw=false, dblh=false, 1);
+
+    VgaSetCustomMode(80, 25, 16, use9bit=false, dblw=false,dblh=false, 1);
 #endif
 
 #if defined(__BORLANDC__) || defined(__DJGPP__)
