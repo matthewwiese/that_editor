@@ -25,12 +25,12 @@ DJCXX      := i586-pc-msdosdjgpp-$(CXX)
 DJCXXFLAGS := $(CXXFLAGS)
 DJCPPFLAGS := $(CPPFLAGS)
 
-all:	e.exe e
+all:	b.exe b
 
-e.exe: $(DJOBJS)
+b.exe: $(DJOBJS)
 	$(DJCXX) -o $@ $^ $(DJCXXFLAGS) $(DJLIBS)
 
-e: $(LXOBJS)
+b: $(LXOBJS)
 	$(LXCXX) -o $@ $^ $(LXCXXFLAGS) $(LXLIBS)
 
 define lxo
@@ -43,7 +43,7 @@ endef
 $(eval $(foreach P,$(patsubst %.o,%,$(OBJS)),$(call lxo)))
 
 clean:
-	rm -f $(DJOBJS) $(LXOBJS) e e.exe
+	rm -f $(DJOBJS) $(LXOBJS) b b.exe
 
 # To install DJGPP on Debian:
 #    From http://ap1.pp.fi/djgpp/gcc/

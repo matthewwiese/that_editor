@@ -1,0 +1,20 @@
+# Syntax highlighting for Markdown
+# Specific to Bisqwit's text editor
+
+# TODO:
+#  * octal escape sequences
+#  * highlight function and class names?
+
+=Idle
+=Header 	bold yellow
+
+=PrivateMember	fg_310 # brown
+=Decorator	red
+
+:idle Idle
+	*		idle
+	"#"		header		recolor=-1
+
+:header Header
+	*		header
+	"\n"	idle

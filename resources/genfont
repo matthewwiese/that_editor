@@ -1,0 +1,3 @@
+#!/bin/bash
+php -q tewi.php > ../tewi.inc
+php -q toshiba.php > ../toshiba.inc

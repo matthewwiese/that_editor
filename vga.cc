@@ -73,10 +73,13 @@ static const unsigned char dcpu16font[8*256] = {
 #include "4x8.inc"
 };
 #if !defined(__BORLANDC__) && !defined(__DJGPP__)
+// MATT: Here is where fonts get loaded for Linux.
 // DOS versions do not need these font files,
 // because they are supplied by the VGA BIOS.
 static const unsigned char p16font[16*256] = {
 #include "8x16.inc"
+//#include "toshiba.inc"
+//#include "tewi.inc"
 };
 static const unsigned char p14font[14*256] = {
 #include "8x14.inc"
@@ -151,7 +154,7 @@ namespace
 
         if(!window)
         {
-            window = SDL_CreateWindow("editor",
+            window = SDL_CreateWindow("Bisqwit",
                 SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED,
                 pixels_width, pixels_height,
                 SDL_WINDOW_RESIZABLE);

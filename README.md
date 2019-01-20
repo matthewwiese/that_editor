@@ -9,3 +9,9 @@ Modifications I've made:
 - [X] English keyboard support (he hardcoded Finnish 🇫🇮) *IDEA: Detect keyboard layout*
 - [X] Status line shows a random fortune on startup
 - [X] Format keymap doc to HTML page *IDEA: Further elucidate documentation*
+
+## Building
+Run `make clean && make b && ./b` in your terminal of choice.
+
+## Dependencies
+`sudo apt-get install libxkbcommon-dev libsdl2-2.0 libsdl2-dev`

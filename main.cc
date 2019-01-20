@@ -1740,11 +1740,11 @@ int main(int argc, char**argv)
     InstallMario();
 
     /*
-        Changed Bisqwit's C syntax to Markdown
+        MATT: Changed Bisqwit's C syntax to Markdown
         TODO: Find JSF in directory corresponding
         to current file type
     */
-    Syntax.Parse("markdown.jsf");
+    Syntax.Parse("plaintext.jsf");
     FileNew();
     if(argc == 2)
     {
@@ -1798,13 +1798,18 @@ int main(int argc, char**argv)
         int shift = kbshift;
 #endif
 
-        // If there is a status line visible, and its expiration timer
-        // has run out, delete the status line.
+        /* 
+            MATT: I want the status line to always be visible,
+            so I uncommented this to prevent it from hiding.
+
         if(StatusLine[0] && StatusLineProtection < MarioTimer)
         {
+            // If there is a status line visible, and its expiration timer
+            // has run out, delete the status line.
             StatusLine[0] = '\0';
             VisRender();
         }
+        */
 
         bool wasbegin = Cur.x==BlockBegin.x && Cur.y==BlockBegin.y;
         bool wasend   = Cur.x==BlockEnd.x   && Cur.y==BlockEnd.y;
